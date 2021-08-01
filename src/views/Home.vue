@@ -118,7 +118,7 @@ export default defineComponent({
         titleLeft: "0.4rem",
         jumpBtnTop: "0.0rem",
         jumpBtnLeft: "2.7rem",
-        background: 'url("/src/assets/item-bg.png") no-repeat',
+        background: "linear-gradient(-55deg, #1D2089, #C51523)",
         width: "3.4rem",
         height: "3.4rem",
       },
