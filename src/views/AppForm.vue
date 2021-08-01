@@ -100,10 +100,10 @@ export default defineComponent({
     Header,
   },
   setup() {
-    let username = ref("");
-    let companyName = ref("");
-    let position = ref("");
-    let telephone = ref("");
+    let username = ref(""); // 客户名称
+    let companyName = ref(""); // 企业名称
+    let position = ref(""); // 职位
+    let telephone = ref(""); //电话号码
     const topics = ref([
       "央企负责人数字化采购案例分享",
       "产业链供应链专家分享",
@@ -112,9 +112,9 @@ export default defineComponent({
       "信创专场主题分享",
       "其他",
     ]);
-    let topic = ref("");
-    let area = ref("");
-    let topicData = ref(1);
+    let topic = ref(""); // 关注议题
+    let area = ref(""); //所属区域
+    let topicData = ref(1); // 关注议题ppt课题
     let pickerShow = ref(false);
     let areaShow = ref(false);
     const showPicker = () => {
