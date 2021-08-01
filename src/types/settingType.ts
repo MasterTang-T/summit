@@ -11,4 +11,5 @@ export interface ISettings {
 	background?: string,
 	width?: string,
 	height?: string,
+	routerName?: string,
 }

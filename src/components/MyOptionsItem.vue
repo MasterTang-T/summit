@@ -31,8 +31,9 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { ISettings } from "../types/settingType";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   props: {
@@ -41,11 +42,14 @@ export default defineComponent({
       type: Object as PropType<ISettings>,
     },
   },
+ 
   setup(props) {
+    
     const getSrc = (name: any) => {
       const modules = import.meta.globEager("/src/assets/*.png");
       return modules[name].default;
     };
+ 
     return {
       getSrc,
     };

@@ -2,9 +2,10 @@
   <my-options-item :setting="setting" />
 </template>
 <script lang='ts' >
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import MyOptionsItem from "components/MyOptionsItem.vue";
 import { ISettings } from "../types/settingType";
+
 export default defineComponent({
   props: {
     setting: {
@@ -15,7 +16,9 @@ export default defineComponent({
   components: {
     MyOptionsItem,
   },
-  setup(props) {},
+  setup(props) {
+    return {};
+  },
 });
 </script>
 <style scoped>
