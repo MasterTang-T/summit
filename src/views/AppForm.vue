@@ -123,6 +123,14 @@ export default defineComponent({
     const showArea = () => {
       areaShow.value = true;
     };
+    const resetData = () => {
+      username.value = "";
+      companyName.value = "";
+      position.value = "";
+      telephone.value = "";
+      topic.value = "";
+      area.value = "";
+    };
     const submitForm = async () => {
       if (!username.value) {
         Notify({ type: "warning", message: "请输入姓名" });
@@ -156,10 +164,12 @@ export default defineComponent({
       });
       if (result.code === 200) {
         Notify({ type: "success", message: "报名成功" });
+        resetData();
       } else {
         Notify({ type: "warning", message: "报名失败" });
       }
     };
+
     const onConfirm = (value: string, index: number) => {
       topic.value = value;
       pickerShow.value = false;
