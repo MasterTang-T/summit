@@ -94,6 +94,8 @@ import Header from "components/Header.vue";
 import service from "../utils/service";
 import { Notify, Area } from "vant";
 import { areaList } from "@vant/area-data";
+import { IResponseType } from "../types/responseType";
+
 export default defineComponent({
   name: "AppForm",
   components: {
@@ -153,7 +155,7 @@ export default defineComponent({
         return;
       }
 
-      const result: any = await service.post("/open/apply/addItem", {
+      const result: IResponseType = await service.post("/open/apply/addItem", {
         username: username.value,
         companyName: companyName.value,
         position: position.value,
