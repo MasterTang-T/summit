@@ -73,6 +73,7 @@
       </div>
     </div>
     <div class="footer">测试中,敬请期待...</div>
+    <div style="width: 375px; height: 10px"></div>
   </div>
   <my-alert v-if="visible" @onClose="onClose"></my-alert>
 </template>
@@ -160,10 +161,10 @@ export default defineComponent({
     }
   }
   .footer {
-    font-size: 0.36rem;
+    font-size: 0.2rem;
     font-family: Source Han Sans CN;
     font-weight: 400;
-    color: #666666;
+    color: #999999;
     position: absolute;
     bottom: 0.1rem;
     width: 100%;

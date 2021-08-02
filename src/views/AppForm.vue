@@ -65,10 +65,8 @@
             <van-picker
               title="关注议题"
               :columns="topics"
-              :show-toolbar="false"
               @confirm="onConfirm"
               @cancel="onCancel"
-              @change="onChange"
             />
           </div>
         </div>
@@ -176,10 +174,6 @@ export default defineComponent({
       topic.value = value;
       pickerShow.value = false;
     };
-    const onChange = (value: string, index: number) => {
-      topic.value = value;
-      pickerShow.value = false;
-    };
     const onCancel = () => {
       pickerShow.value = false;
     };
@@ -210,7 +204,6 @@ export default defineComponent({
       showPicker,
       showArea,
       onConfirm,
-      onChange,
       onCancel,
       onConfirmArea,
       onCancelArea,
@@ -221,6 +214,7 @@ export default defineComponent({
 <style scoped lang='less'>
 .AppForm {
   width: 100vw;
+  overflow: hidden;
   background: #f8f8f8;
   .form-content {
     margin-top: 0.4rem;
@@ -230,7 +224,7 @@ export default defineComponent({
       padding: 0.56rem;
       border-bottom: 1px solid #fbfbfb;
       .form-label {
-        font-size: 0.44rem;
+        font-size: 0.3rem;
         font-family: Source Han Sans CN;
         font-weight: 400;
         color: #666666;
@@ -243,7 +237,7 @@ export default defineComponent({
       .form-input input {
         border: none;
         outline: none;
-        font-size: 0.6rem;
+        font-size: 0.46rem;
         font-family: Source Han Sans CN;
         font-weight: 500;
         color: #333333;
@@ -255,13 +249,13 @@ export default defineComponent({
     }
     .form-button {
       width: 85%;
-      height: 1.68rem;
+      height: 1.1rem;
       background: linear-gradient(90deg, #e40216, #262186);
       border-radius: 0.12rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 0.72rem;
+      font-size: 0.4rem;
       font-family: Source Han Sans CN;
       font-weight: 400;
       color: #ffffff;
