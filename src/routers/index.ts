@@ -1,43 +1,48 @@
 import { createRouter, createWebHistory, } from 'vue-router'
 
 const routes = [
+
 	{
 		path: '/',
-		name: 'Home',
-		component: () => import('views/Home.vue')
+		redirect: '/geos'
 	},
 	{
-		path: '/form',
+		path: '/geos/',
+		name: 'Home',
+		component: () => import('views/Home.vue'),
+	},
+	{
+		path: '/geos/form',
 		name: 'AppForm',
 		component: () => import('views/AppForm.vue')
 	},
 	{
-		path: '/MeetingIntroduction',
+		path: '/geos/MeetingIntroduction',
 		name: 'MeetingIntroduction',
 		component: () => import('views/MeetingIntroduction.vue')
 	},
 	{
-		path: '/MeetingSchedule',
+		path: '/geos/MeetingSchedule',
 		name: 'MeetingSchedule',
 		component: () => import('views/MeetingSchedule.vue')
 	},
 	{
-		path: '/GuestIntroduction',
+		path: '/geos/GuestIntroduction',
 		name: 'GuestIntroduction',
 		component: () => import('views/GuestIntroduction.vue')
 	},
 	{
-		path: '/TrafficPlan',
+		path: '/geos/TrafficPlan',
 		name: 'TrafficPlan',
 		component: () => import('views/TrafficPlan.vue')
 	},
 	{
-		path: '/MeetingGuide',
+		path: '/geos/MeetingGuide',
 		name: 'MeetingGuide',
 		component: () => import('views/MeetingGuide.vue')
 	},
 	{
-		path: '/ContactUs',
+		path: '/geos/ContactUs',
 		name: 'ContactUs',
 		component: () => import('views/ContactUs.vue')
 	},
