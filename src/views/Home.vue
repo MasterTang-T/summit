@@ -72,8 +72,7 @@
         </div>
       </div>
     </div>
-    <div class="footer">测试中,敬请期待...</div>
-    <div style="width: 375px; height: 10px"></div>
+    <div class="footer">敬请期待...</div>
   </div>
   <my-alert v-if="visible" @onClose="onClose"></my-alert>
 </template>
@@ -103,7 +102,6 @@ export default defineComponent({
     let visible = ref(false);
     const router = useRouter();
     const toPage = (name: string) => {
-      console.log(name, "name");
       if (name === "") {
         visible.value = true;
       } else {
