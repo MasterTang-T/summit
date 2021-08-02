@@ -32,7 +32,7 @@ export default defineComponent({
   flex-direction: column;
   font-size: 3rem;
   background-image: linear-gradient(90deg, #e40216, #262186);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   .desc {
     font-size: 0.5rem;
@@ -40,6 +40,7 @@ export default defineComponent({
   }
   .backHome {
     cursor: pointer;
+    text-decoration: underline;
   }
 }
 </style>
