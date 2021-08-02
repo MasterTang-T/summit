@@ -93,6 +93,7 @@ import service from "../utils/service";
 import { Notify, Area } from "vant";
 import { areaList } from "@vant/area-data";
 import { IResponseType } from "../types/responseType";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "AppForm",
@@ -100,6 +101,7 @@ export default defineComponent({
     Header,
   },
   setup() {
+    let router = useRouter();
     let username = ref(""); // 客户名称
     let companyName = ref(""); // 企业名称
     let position = ref(""); // 职位
@@ -165,6 +167,11 @@ export default defineComponent({
       if (result.code === 200) {
         Notify({ type: "success", message: "报名成功" });
         resetData();
+        setTimeout(() => {
+          router.push({
+            name: "Home",
+          });
+        }, 500);
       } else {
         Notify({ type: "warning", message: "报名失败" });
       }
