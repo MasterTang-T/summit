@@ -48,6 +48,7 @@ export default defineComponent({
     margin-top: 0.9rem;
     img {
       width: 2.6rem;
+      height: 2.3rem;
     }
   }
   &-text {

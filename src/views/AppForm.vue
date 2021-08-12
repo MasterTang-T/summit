@@ -87,7 +87,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, Ref } from "vue";
 import Header from "components/Header.vue";
 import service from "../utils/service";
 import { Notify, Area } from "vant";
@@ -102,7 +102,7 @@ export default defineComponent({
   },
   setup() {
     let router = useRouter();
-    let username = ref(""); // 客户名称
+    let username: Ref<string> = ref(""); // 客户名称
     let companyName = ref(""); // 企业名称
     let position = ref(""); // 职位
     let telephone = ref(""); //电话号码
