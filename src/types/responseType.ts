@@ -1,4 +1,4 @@
 export interface IResponseType {
 	code: number;
-	data: object;
+	data: number;
 }

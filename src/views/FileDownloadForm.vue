@@ -1,21 +1,21 @@
 <template>
-  <div class="AppForm">
+  <div class="FileDownloadForm">
     <Header />
     <div class="form-content">
       <div class="form-item">
-        <div class="form-label">企业名称（必填）:</div>
+        <div class="form-label">姓名(必填):</div>
         <div class="form-input">
-          <input
-            type="text"
-            placeholder="请输入企业名称"
-            v-model="companyName"
-          />
+          <input type="text" placeholder="请输入姓名" v-model="username" />
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">姓名（必填）:</div>
+        <div class="form-label">公司名称(必填):</div>
         <div class="form-input">
-          <input type="text" placeholder="请输入姓名" v-model="username" />
+          <input
+            type="text"
+            placeholder="请输入公司名称"
+            v-model="companyName"
+          />
         </div>
       </div>
       <div class="form-item">
@@ -31,53 +31,29 @@
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">所属区域(必填):</div>
+        <div class="form-label">邮箱(必填):</div>
         <div class="form-input">
-          <input
-            type="text"
-            placeholder="请选择所属区域"
-            v-model="area"
-            readonly
-            @click="showArea"
-          />
-          <div class="form-pick" v-show="areaShow">
-            <van-area
-              title="所属区域"
-              :area-list="areaList"
-              :show-toolbar="false"
-              @confirm="onConfirmArea"
-              @cancel="onCancelArea"
-            />
-          </div>
+          <input type="text" placeholder="请输入邮箱" v-model="email" />
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">关注议题(必填):</div>
+        <div class="form-label">部门(必填):</div>
         <div class="form-input">
           <input
             type="text"
-            placeholder="请选择关注议题"
-            v-model="topic"
+            placeholder="请选择部门"
+            v-model="depot"
             readonly
             @click="showPicker"
           />
           <div class="form-pick" v-show="pickerShow">
             <van-picker
-              title="关注议题"
-              :columns="topics"
+              title="部门"
+              :columns="depots"
               @confirm="onConfirm"
               @cancel="onCancel"
             />
           </div>
-        </div>
-      </div>
-      <div class="form-item">
-        <div class="form-label">是否需要关注议题PPT课件(选填):</div>
-        <div class="form-input form-radio">
-          <van-radio-group v-model="topicData" direction="horizontal">
-            <van-radio name="1">是</van-radio>
-            <van-radio name="2">否</van-radio>
-          </van-radio-group>
         </div>
       </div>
       <div class="form-item">
@@ -90,13 +66,12 @@
 import { defineComponent, ref, Ref } from "vue";
 import Header from "components/Header.vue";
 import service from "../utils/service";
-import { Notify, Area } from "vant";
-import { areaList } from "@vant/area-data";
+import { Notify } from "vant";
 import { IResponseType } from "../types/responseType";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: "AppForm",
+  name: "FileDownloadForm",
   components: {
     Header,
   },
@@ -106,32 +81,39 @@ export default defineComponent({
     let companyName = ref(""); // 企业名称
     let position = ref(""); // 职位
     let telephone = ref(""); //电话号码
-    const topics = ref([
-      "央企负责人数字化采购案例分享",
-      "产业链供应链专家分享",
-      "欧菲斯数字化采购服务平台",
-      "数字化采购发展报告",
-      "信创专场主题分享",
+    const depots = ref([
+      "审计管理",
+      "税务管理",
+      "工程设计/研发",
+      "财务管理",
+      "财务会计",
+      "IT/IS/信息管理",
+      "法务",
+      "电子商务",
+      "运营",
+      "管理层",
+      "采购寻源",
+      "销售/市场",
+      "供应链管理",
+      "安全/风险管理",
+      "共享服务",
+      "差旅管理",
       "其他",
     ]);
-    let topic = ref(""); // 关注议题
-    let area = ref(""); //所属区域
-    let topicData = ref(1); // 关注议题ppt课题
+    let depot = ref(""); // 关注议题
+    let email = ref("");
     let pickerShow = ref(false);
-    let areaShow = ref(false);
     const showPicker = () => {
       pickerShow.value = true;
     };
-    const showArea = () => {
-      areaShow.value = true;
-    };
+
     const resetData = () => {
       username.value = "";
       companyName.value = "";
       position.value = "";
       telephone.value = "";
-      topic.value = "";
-      area.value = "";
+      depot.value = "";
+      email.value = "";
     };
     const submitForm = async () => {
       if (!username.value) {
@@ -146,27 +128,32 @@ export default defineComponent({
         Notify({ type: "warning", message: "请输入联系方式" });
         return;
       }
-      if (!topic.value) {
-        Notify({ type: "warning", message: "请选择关注议题" });
+      if (!depot.value) {
+        Notify({ type: "warning", message: "请选择部门" });
         return;
       }
-      if (!area.value) {
-        Notify({ type: "warning", message: "请选择所属区域" });
+      if (!email.value) {
+        Notify({ type: "warning", message: "请输入邮箱" });
+        return;
+      }
+      if (!position.value) {
+        Notify({ type: "warning", message: "请输入职位" });
         return;
       }
 
-      const result: IResponseType = await service.post("/open/apply/addItem", {
-        username: username.value,
-        companyName: companyName.value,
-        position: position.value,
-        telephone: telephone.value,
-        area: area.value,
-        topic: topic.value,
-        topicData: topicData.value,
-      });
+      const result: IResponseType = await service.post(
+        "/open/apply/download/addItem",
+        {
+          username: username.value,
+          companyName: companyName.value,
+          position: position.value,
+          telephone: telephone.value,
+          email: email.value,
+          depot: depot.value,
+        }
+      );
       if (result.code === 200) {
-        const { data = 10 } = result;
-        Notify({ type: "success", message: `已报名人数:${data}人` });
+        Notify({ type: "success", message: `提交信息成功` });
         resetData();
         setTimeout(() => {
           router.push({
@@ -174,53 +161,37 @@ export default defineComponent({
           });
         }, 500);
       } else {
-        Notify({ type: "warning", message: "报名失败" });
+        Notify({ type: "warning", message: "提交信息失败" });
       }
     };
 
     const onConfirm = (value: string, index: number) => {
-      topic.value = value;
+      depot.value = value;
       pickerShow.value = false;
     };
     const onCancel = () => {
       pickerShow.value = false;
     };
-    const onConfirmArea = (value: any, index: number) => {
-      area.value = "";
-      let valueArr: [] = value;
-      valueArr.forEach((item: any) => {
-        area.value += item.name;
-      });
-      areaShow.value = false;
-    };
-    const onCancelArea = () => {
-      areaShow.value = false;
-    };
+
     return {
-      submitForm,
-      topics,
-      topic,
-      area,
-      topicData,
+      depots,
+      depot,
+      email,
       username,
       companyName,
       position,
       telephone,
-      areaList,
       pickerShow,
-      areaShow,
       showPicker,
-      showArea,
       onConfirm,
       onCancel,
-      onConfirmArea,
-      onCancelArea,
+      submitForm,
     };
   },
 });
 </script>
 <style scoped lang='less'>
-.AppForm {
+.FileDownloadForm {
   width: 100vw;
   overflow: hidden;
   background: #f8f8f8;

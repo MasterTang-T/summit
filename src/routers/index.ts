@@ -32,6 +32,11 @@ const routes = [
 		component: () => import('views/GuestIntroduction.vue')
 	},
 	{
+		path: '/geos/FileDownloadForm',
+		name: 'FileDownloadForm',
+		component: () => import('views/FileDownloadForm.vue')
+	},
+	{
 		path: '/geos/TrafficPlan',
 		name: 'TrafficPlan',
 		component: () => import('views/TrafficPlan.vue')
@@ -46,7 +51,11 @@ const routes = [
 		name: 'ContactUs',
 		component: () => import('views/ContactUs.vue')
 	},
-
+	// {
+	// 	path: '/geos/testMap',
+	// 	name: 'testMap',
+	// 	component: () => import('views/testMap.vue')
+	// },
 	// 所有未定义路由，全部重定向到404页
 	{
 		path: "/:catchAll(.*)",
