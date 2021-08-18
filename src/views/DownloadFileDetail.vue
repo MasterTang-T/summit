@@ -2,12 +2,7 @@
   <div class="DownloadFileDetail">
     <div class="title">{{ item.filename }}</div>
     <div class="content">
-      <img
-        :src="getSrc(el)"
-        alt=""
-        v-for="(el, index) in item.detailImg"
-        :key="index"
-      />
+      <img :src="getSrc(el)" alt="" v-for="el in item.detailImg" :key="el" />
       <div class="tips">下载查看完整内容...</div>
     </div>
     <div class="footer" @click="downloadFile(item)">
@@ -22,7 +17,11 @@ import { useRoute } from "vue-router";
 export default defineComponent({
   setup() {
     const route = useRoute();
-    const item = route.query;
+    let item: any = {
+      filename: "",
+      detailImg: [],
+    };
+    item = route.query;
     const getSrc = (name: any) => {
       const modules = import.meta.globEager("/src/assets/file1/*.jpg");
       return modules[name].default;
@@ -59,15 +58,8 @@ export default defineComponent({
     text-align: center;
     font-size: 0.4rem;
     font-weight: bold;
-    color: #000000;
-    background: linear-gradient(
-      0deg,
-      #e40216 0.2685546875%,
-      #262186 98.974609375%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    color: #333333;
+   }
   .content {
     padding-bottom: 1.2rem;
     img {

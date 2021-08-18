@@ -96,17 +96,8 @@ export default defineComponent({
     &-title {
       padding: 0.3rem 0 0.3rem 0.3rem;
       font-size: 0.4rem;
-      font-family: Source Han Sans CN;
       font-weight: bold;
       color: #333333;
-
-      background: linear-gradient(
-        0deg,
-        #de333d 0.2685546875%,
-        #1c20a1 98.974609375%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
     &-item {
       width: 100%;

@@ -51,11 +51,6 @@ const routes = [
 		name: 'ContactUs',
 		component: () => import('views/ContactUs.vue')
 	},
-	// {
-	// 	path: '/geos/testMap',
-	// 	name: 'testMap',
-	// 	component: () => import('views/testMap.vue')
-	// },
 	{
 		path: '/geos/DownloadList',
 		name: 'DownloadList',

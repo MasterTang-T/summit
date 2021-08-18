@@ -1,7 +1,7 @@
 <template>
   <div class="MeetingGuide">
     <Header />
-    <div class="MeetingGuide-item" @click="add_Driving(map1, end1)">
+    <div class="MeetingGuide-item" >
       <div class="MeetingGuide-item-title">北京望京凯越酒店</div>
       <span class="MeetingGuide-item-des">（峰会主会场酒店）</span>
       <div
@@ -11,7 +11,7 @@
       ></div>
       <van-skeleton title :row="7" v-if="isLoading" />
     </div>
-    <div class="MeetingGuide-item" @click="add_Driving(map2, end2)">
+    <div class="MeetingGuide-item" >
       <div class="MeetingGuide-item-title">民航国际会议中心</div>
       <span class="MeetingGuide-item-des">（附近推荐入驻酒店）</span>
       <div
@@ -21,7 +21,7 @@
       ></div>
       <van-skeleton title :row="7" v-if="isLoading" />
     </div>
-    <div class="MeetingGuide-item" @click="add_Driving(map3, end3)">
+    <div class="MeetingGuide-item" >
       <div class="MeetingGuide-item-title">北京方恒假日酒店</div>
       <span class="MeetingGuide-item-des">（附近推荐入驻酒店）</span>
       <div
@@ -99,9 +99,9 @@ export default {
               longitude: result.position.lng,
             };
             _this.star = [res.longitude, res.latitude]; //起点经纬度
-            // _this.add_Driving(_this.map1, _this.end1);
-            // _this.add_Driving(_this.map2, _this.end2);
-            // _this.add_Driving(_this.map3, _this.end3);
+            _this.add_Driving(_this.map1, _this.end1);
+            _this.add_Driving(_this.map2, _this.end2);
+            _this.add_Driving(_this.map3, _this.end3);
           } else {
             console.log(result);
           }
@@ -134,18 +134,12 @@ export default {
   &-item {
     width: 100%;
     height: 6rem;
+    margin-bottom: 1rem;
     &-title {
       font-size: 0.4rem;
       font-family: Source Han Sans CN;
       font-weight: bold;
-      color: #666666;
-      background: linear-gradient(
-        0deg,
-        #e40216 0.2685546875%,
-        #262186 98.974609375%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #333333;
       height: 1rem;
       display: inline-flex;
       align-items: center;
@@ -154,7 +148,6 @@ export default {
     &-des {
       font-size: 0.3rem;
       font-family: Source Han Sans CN;
-      font-weight: bold;
       color: #999999;
       background: none;
     }

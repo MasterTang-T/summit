@@ -161,7 +161,7 @@ export default defineComponent({
           });
         }, 500);
       } else {
-        Notify({ type: "warning", message: result.message || "提交信息失败" });
+        Notify({ type: "warning", message: result.message?result.message:"提交信息失败" });
       }
     };
 
