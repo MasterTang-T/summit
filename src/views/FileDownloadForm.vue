@@ -157,11 +157,11 @@ export default defineComponent({
         resetData();
         setTimeout(() => {
           router.push({
-            name: "Home",
+            path: "/geos/DownloadList",
           });
         }, 500);
       } else {
-        Notify({ type: "warning", message: "提交信息失败" });
+        Notify({ type: "warning", message: result.message || "提交信息失败" });
       }
     };
 

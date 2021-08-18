@@ -1,3 +1,3 @@
-export interface ICalcRem{
-	(designWidth:number):void;
+export interface ICalcRem {
+	(designWidth: number): void;
 }

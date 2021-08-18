@@ -1,0 +1,106 @@
+<template>
+  <div class="DownloadFileDetail">
+    <div class="title">{{ item.filename }}</div>
+    <div class="content">
+      <img
+        :src="getSrc(el)"
+        alt=""
+        v-for="(el, index) in item.detailImg"
+        :key="index"
+      />
+      <div class="tips">下载查看完整内容...</div>
+    </div>
+    <div class="footer" @click="downloadFile(item)">
+      文件下载
+      <img src="../assets/download-icon.png" alt="" />
+    </div>
+  </div>
+</template>
+<script lang='ts'>
+import { defineComponent, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+export default defineComponent({
+  setup() {
+    const route = useRoute();
+    const item = route.query;
+    const getSrc = (name: any) => {
+      const modules = import.meta.globEager("/src/assets/file1/*.jpg");
+      return modules[name].default;
+    };
+    const downloadFile = (item: any) => {
+      // 创建a标签
+      const link = document.createElement("a");
+      // download属性
+      link.setAttribute("download", item.fileOrgName);
+      // href链接
+      link.setAttribute("href", item.fileurl);
+      // 自执行点击事件
+      link.click();
+      document.body.removeChild(link);
+    };
+    return {
+      item,
+      getSrc,
+      downloadFile,
+    };
+  },
+});
+</script>
+<style scoped lang='less'>
+.DownloadFileDetail {
+  width: 100vw;
+  position: relative;
+  .title {
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: 0.4rem;
+    font-weight: bold;
+    color: #000000;
+    background: linear-gradient(
+      0deg,
+      #e40216 0.2685546875%,
+      #262186 98.974609375%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .content {
+    padding-bottom: 1.2rem;
+    img {
+      width: 100%;
+    }
+    .tips {
+      font-size: 0.2rem;
+      font-weight: 400;
+      color: #999999;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .footer {
+    background: #ffffff;
+    box-shadow: 0px -2px 8px 0px rgba(153, 153, 153, 0.2);
+    width: 100%;
+    height: 1rem;
+    position: fixed;
+    bottom: 0;
+    font-size: 0.4rem;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      margin-left: 0.3rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      object-fit: contain;
+    }
+  }
+}
+</style>

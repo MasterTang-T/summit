@@ -1,9 +1,6 @@
 <template>
   <div class="MeetingGuide">
     <Header />
-    <van-loading size="24px" vertical v-if="isLoading"
-      >地图加载中...</van-loading
-    >
     <div class="MeetingGuide-item" @click="add_Driving(map1, end1)">
       <div class="MeetingGuide-item-title">北京望京凯越酒店</div>
       <span class="MeetingGuide-item-des">（峰会主会场酒店）</span>
@@ -38,6 +35,7 @@
 </template>
 <script>
 import Header from "components/Header.vue";
+import { Toast } from "vant";
 export default {
   name: "MeetingGuide",
   components: {
@@ -70,6 +68,11 @@ export default {
         zoom: 15, //缩放级别
         resizeEnable: true, //自动定位
       });
+      Toast.loading({
+        message: "地图加载中...",
+        forbidClick: false,
+        duration: 0,
+      });
       AMap.plugin("AMap.Geolocation", function () {
         var geolocation = new AMap.Geolocation({
           enableHighAccuracy: true, //是否使用高精度定位，默认:true
@@ -83,6 +86,9 @@ export default {
         _this.map3.addControl(geolocation);
         geolocation.getCurrentPosition(function (status, result) {
           _this.isLoading = false;
+          if (_this.isLoading === false) {
+            Toast.clear();
+          }
           if (status == "complete") {
             //这个地方的result，可能会出现报错：获得地理定位时间。得到ipLocation成功。获取地址失败，请检查您的密钥或网络。
             //可能是密匙申请错了，重新申请密匙，生成maps.js文件。

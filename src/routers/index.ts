@@ -34,7 +34,7 @@ const routes = [
 	{
 		path: '/geos/FileDownloadForm',
 		name: 'FileDownloadForm',
-		component: () => import('views/FileDownloadForm.vue')
+		component: () => import('views/FileDownloadForm.vue'),
 	},
 	{
 		path: '/geos/TrafficPlan',
@@ -56,6 +56,16 @@ const routes = [
 	// 	name: 'testMap',
 	// 	component: () => import('views/testMap.vue')
 	// },
+	{
+		path: '/geos/DownloadList',
+		name: 'DownloadList',
+		component: () => import('views/DownloadList.vue')
+	},
+	{
+		path: '/geos/DownloadFileDetail',
+		name: 'DownloadFileDetail',
+		component: () => import('views/DownloadFileDetail.vue')
+	},
 	// 所有未定义路由，全部重定向到404页
 	{
 		path: "/:catchAll(.*)",
