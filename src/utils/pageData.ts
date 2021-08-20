@@ -77,7 +77,7 @@ export const items3 = [
 		background: "#232FD0",
 		width: "3.4rem",
 		height: "1.8rem",
-		routerName: "FileDownloadForm",
+		routerName: "DownloadList",
 	},
 ];
 export const items4 = [

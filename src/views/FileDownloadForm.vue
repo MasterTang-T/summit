@@ -68,7 +68,7 @@ import Header from "components/Header.vue";
 import service from "../utils/service";
 import { Notify } from "vant";
 import { IResponseType } from "../types/responseType";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
   name: "FileDownloadForm",
@@ -77,6 +77,12 @@ export default defineComponent({
   },
   setup() {
     let router = useRouter();
+    let route = useRoute();
+    let item: any = {
+      filename: "",
+      detailImg: [],
+    };
+    item = route.query;
     let username: Ref<string> = ref(""); // 客户名称
     let companyName = ref(""); // 企业名称
     let position = ref(""); // 职位
@@ -157,11 +163,15 @@ export default defineComponent({
         resetData();
         setTimeout(() => {
           router.push({
-            path: "/geos/DownloadList",
+            path: "/geos/DownloadFileDetail",
+            query: item,
           });
         }, 500);
       } else {
-        Notify({ type: "warning", message: result.message?result.message:"提交信息失败" });
+        Notify({
+          type: "warning",
+          message: result.message ? result.message : "提交信息失败",
+        });
       }
     };
 

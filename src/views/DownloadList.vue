@@ -19,9 +19,9 @@
             <div class="info-box-name">{{ item.filename }}</div>
             <div class="info-box-size">{{ item.filesize }}</div>
           </div>
-          <div class="info-box-download" @click="downloadFile(item)">
+          <!-- <div class="info-box-download" @click="downloadFile(item)">
             <img src="../assets/download-icon.png" alt="" />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -38,6 +38,7 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
+    
     const files = ref([
       {
         fileurl:
@@ -73,7 +74,7 @@ export default defineComponent({
     };
     const toDetail = (item: any) => {
       router.push({
-        path: "/geos/DownloadFileDetail",
+        path: "/geos/FileDownloadForm",
         query: item,
       });
     };
