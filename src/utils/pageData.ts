@@ -116,7 +116,7 @@ export const items5 = [
 ];
 export const items6 = [
 	{
-		title: "会场指引",
+		title: "防控须知",
 		description: "",
 		icon: "/src/assets/8-icon.png",
 		iconTop: "-0.1rem",
@@ -128,7 +128,7 @@ export const items6 = [
 		background: "#232FD0",
 		width: "2.22rem",
 		height: "2.5rem",
-		routerName: "MeetingGuide",
+		routerName: "MeetingWarning",
 	},
 ];
 export const items7 = [

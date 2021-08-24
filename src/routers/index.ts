@@ -42,9 +42,9 @@ const routes = [
 		component: () => import('views/TrafficPlan.vue')
 	},
 	{
-		path: '/geos/MeetingGuide',
-		name: 'MeetingGuide',
-		component: () => import('views/MeetingGuide.vue')
+		path: '/geos/MeetingWarning',
+		name: 'MeetingWarning',
+		component: () => import('views/MeetingWarning.vue')
 	},
 	{
 		path: '/geos/ContactUs',
