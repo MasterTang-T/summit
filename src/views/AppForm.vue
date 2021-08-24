@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <div class="form-item">
+      <!-- <div class="form-item">
         <div class="form-label">是否需要关注议题PPT课件(选填):</div>
         <div class="form-input form-radio">
           <van-radio-group v-model="topicData" direction="horizontal">
@@ -79,7 +79,7 @@
             <van-radio name="2">否</van-radio>
           </van-radio-group>
         </div>
-      </div>
+      </div> -->
       <div class="form-item">
         <div class="form-button" @click="submitForm">确认提交</div>
       </div>

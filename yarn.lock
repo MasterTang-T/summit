@@ -970,6 +970,11 @@ vue-tsc@^0.0.24:
   dependencies:
     unzipper "0.10.11"
 
+vue3-seamless-scroll@^1.0.6:
+  version "1.0.6"
+  resolved "https://repo.huaweicloud.com/repository/npm/vue3-seamless-scroll/-/vue3-seamless-scroll-1.0.6.tgz#81a45e026ca616522f1c2d9adae0f3bb62379a7d"
+  integrity sha512-fPLO+SHKVIfWt3T+nFKDSEQl/5l9HtvhJ17yfwiK3X/r1AH9HmcaT9A2R+jS4uKHHeZ6pGI9E7sQ8rOctHAUjA==
+
 vue@^3.0.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.1.5.tgz#12879b11d0685ee4478c8869551799630a52f9fe"

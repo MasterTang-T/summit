@@ -12,7 +12,7 @@
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent } from "vue";
 import { useRoute } from "vue-router";
 export default defineComponent({
   setup() {
@@ -59,7 +59,7 @@ export default defineComponent({
     font-size: 0.4rem;
     font-weight: bold;
     color: #333333;
-   }
+  }
   .content {
     padding-bottom: 1.2rem;
     img {

@@ -14,7 +14,8 @@
     "normalize.css": "^8.0.1",
     "vant": "^3.1.5",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.10"
+    "vue-router": "^4.0.10",
+    "vue3-seamless-scroll": "^1.0.6"
   },
   "devDependencies": {
     "@types/node": "^16.4.3",
