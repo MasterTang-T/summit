@@ -10,13 +10,13 @@
       >
         <div class="item" v-for="(item, index) in datas" :key="index">
           <div class="name-item">
-            <span class="name" v-if="item.name">{{
-              formatName(item.name)
+            <span class="name" v-if="item.username">{{
+              formatName(item.username)
             }}</span>
-            <span class="companyName" v-if="item.name">{{
+            <span class="companyName" v-if="item.username">{{
               formatName(item.companyName)
             }}</span>
-            <span v-if="item.name">报名成功</span>
+            <span v-if="item.username">报名成功</span>
           </div>
         </div>
       </js-seamless-scroll>
@@ -26,7 +26,6 @@
 <script>
 import { reactive, toRefs, ref, onMounted } from "vue";
 import { jsSeamlessScroll } from "vue3-seamless-scroll";
-import axios from "axios";
 import service from "../utils/service";
 export default {
   name: "Header",
@@ -53,19 +52,24 @@ export default {
       return newStr;
     }
     const list = reactive({
-      datas: [],
+      datas: [
+        {
+          username: "",
+          companyName: "",
+        },
+      ],
     });
     function getDataList() {
-      axios
-        .post(
-          "https://www.fastmock.site/mock/39150d28182b2473079141b2a652d49c/beta/nameList"
-        )
+      service
+        .get("/open/apply")
         .then((res) => {
-          let list1 = res.data.data.list || [];
-          list.datas = [];
-          list1.forEach((item) => {
-            list.datas.push(item);
-          });
+          if (res.code === 200) {
+            let list1 = res.data || [];
+            list.datas = [];
+            list1.forEach((item) => {
+              list.datas.push(item);
+            });
+          }
         })
         .catch((err) => {
           console.log(err, "err");
