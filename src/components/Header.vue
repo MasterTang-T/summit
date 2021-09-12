@@ -14,7 +14,7 @@
               formatName(item.username)
             }}</span>
             <span class="companyName" v-if="item.username">{{
-              formatName(item.companyName)
+              formatCompanyName(item.companyName)
             }}</span>
             <span v-if="item.username">报名成功</span>
           </div>
@@ -51,6 +51,23 @@ export default {
       }
       return newStr;
     }
+    function formatCompanyName(name) {
+      let newStr = "";
+      if (name) {
+        if (name.length === 4) {
+          newStr = name.substr(0, 4) + "*";
+        } else if (name.length > 4) {
+          let char = "";
+          for (let i = 0, len = name.length - 4; i < len; i++) {
+            char += "*";
+          }
+          newStr = name.substr(0, 4) + char + name.substr(-1, 4);
+        } else {
+          newStr = name;
+        }
+      }
+      return newStr;
+    }
     const list = reactive({
       datas: [
         {
@@ -81,7 +98,7 @@ export default {
         getDataList();
       }, 1000 * 60 * 3);
     });
-    return { ...toRefs(list), formatName, scroll };
+    return { ...toRefs(list), formatName, scroll, formatCompanyName };
   },
 };
 </script>

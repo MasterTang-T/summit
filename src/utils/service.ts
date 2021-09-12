@@ -1,6 +1,6 @@
 import axios from 'axios';
 const NODE_ENV = process.env.NODE_ENV;
-const BASE_URL = NODE_ENV === 'production' ? 'http://geos.officemate.cn/' : 'http://172.168.10.164:9020';
+const BASE_URL = NODE_ENV === 'production' ? 'http://geos.officemate.cn/' : 'http://geos.officemate.cn/';
 const service = axios.create({
 	baseURL: BASE_URL,
 	timeout: 5000,

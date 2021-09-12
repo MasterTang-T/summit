@@ -48,7 +48,7 @@ export const items2 = [
 		routerName: "MeetingSchedule",
 	},
 	{
-		title: "嘉宾简介",
+		title: "历届嘉宾",
 		description: "",
 		icon: "/src/assets/4-icon.png",
 		iconTop: "",
