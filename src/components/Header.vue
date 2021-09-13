@@ -21,6 +21,7 @@
         </div>
       </js-seamless-scroll>
     </div>
+    <slot name="liveBtn" :liveBtn="liveBtn"></slot>
   </div>
 </template>
 <script>
@@ -34,6 +35,7 @@ export default {
   },
   setup() {
     const scroll = ref(true);
+    const liveBtn = ref("直播入口");
     function formatName(name) {
       let newStr = "";
       if (name) {
@@ -98,7 +100,7 @@ export default {
         getDataList();
       }, 1000 * 60 * 3);
     });
-    return { ...toRefs(list), formatName, scroll, formatCompanyName };
+    return { ...toRefs(list), formatName, scroll, formatCompanyName, liveBtn };
   },
 };
 </script>
@@ -137,5 +139,6 @@ export default {
   .companyName {
     width: 1.2rem;
   }
+  
 }
 </style>

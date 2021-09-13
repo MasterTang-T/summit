@@ -22,6 +22,11 @@ const routes = [
 		component: () => import('views/MeetingIntroduction.vue')
 	},
 	{
+		path: '/geos/LiveForm',
+		name: 'LiveForm',
+		component: () => import('views/LiveForm.vue')
+	},
+	{
 		path: '/geos/MeetingSchedule',
 		name: 'MeetingSchedule',
 		component: () => import('views/MeetingSchedule.vue')

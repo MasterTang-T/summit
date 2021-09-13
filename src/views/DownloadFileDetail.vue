@@ -23,7 +23,7 @@ export default defineComponent({
     };
     item = route.query;
     const getSrc = (name: any) => {
-      const modules = import.meta.globEager("/src/assets/file1/*.jpg");
+      const modules = import.meta.globEager("/src/assets/**/*.jpg");
       return modules[name].default;
     };
     const downloadFile = (item: any) => {

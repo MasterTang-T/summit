@@ -3,7 +3,7 @@ export const items1 = [
 		title: "峰会直播",
 		description: "2021",
 		icon: "/src/assets/1-1-icon.png",
-		routerName: "",
+		routerName: "LiveForm",
 		iconTop: "2.1rem",
 		iconLeft: "2.7rem",
 		titleTop: "0.4rem",

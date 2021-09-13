@@ -1,6 +1,6 @@
 <template>
   <div class="DownloadList">
-    <Header />
+    <!-- <Header /> -->
     <div class="DownloadList-content">
       <div class="DownloadList-content-title">文件下载</div>
       <div
@@ -11,7 +11,7 @@
         <div class="img-box" @click="toDetail(item)">
           <img :src="getSrc(item.wcUrl)" alt="" />
         </div>
-        <div class="info-box">
+        <div class="info-box" @click="toDetail(item)">
           <div class="info-box-icon">
             <img src="../assets/pdf-icon.png" alt="" />
           </div>
@@ -19,18 +19,19 @@
             <div class="info-box-name">{{ item.filename }}</div>
             <div class="info-box-size">{{ item.filesize }}</div>
           </div>
-          <!-- <div class="info-box-download" @click="downloadFile(item)">
+          <div class="info-box-download">
             <img src="../assets/download-icon.png" alt="" />
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref } from "vue";
+import { defineComponent, Ref, ref } from "vue";
 import Header from "components/Header.vue";
 import { useRouter } from "vue-router";
+import { Files } from "../types/downloadFIles";
 export default defineComponent({
   name: "DownloadList",
   components: {
@@ -38,8 +39,17 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
-    
-    const files = ref([
+
+    const files: Ref<Files> = ref([
+      {
+        fileurl:
+          "http://geos.officemate.cn/public/%E6%AC%A7%E8%8F%B2%E6%96%AF%E5%8F%91%E5%B8%83%E4%BC%9A%E5%BB%B6%E6%9C%9F%E9%80%9A%E7%9F%A5%EF%BC%88%E7%9B%96%E7%AB%A0%E7%89%88%EF%BC%89.pdf",
+        wcUrl: "/src/assets/file2/wc.png",
+        filename: "欧菲斯发布会延期通知",
+        fileOrgName: "欧菲斯发布会延期通知.pdf",
+        filesize: "558KB",
+        detailImg: ["/src/assets/file2/1.jpg"],
+      },
       {
         fileurl:
           "http://geos.officemate.cn/2021%E6%95%B0%E5%AD%97%E5%8C%96%E9%87%87%E8%B4%AD%E5%8F%91%E5%B1%95%E6%8A%A5%E5%91%8A.pdf",
@@ -58,7 +68,7 @@ export default defineComponent({
       },
     ]);
     const getSrc = (name: any) => {
-      const modules = import.meta.globEager("/src/assets/file1/*.png");
+      const modules = import.meta.globEager("/src/assets/**/*.png");
       return modules[name].default;
     };
     const downloadFile = (item: any) => {
@@ -103,7 +113,7 @@ export default defineComponent({
     &-item {
       width: 100%;
       height: 5rem;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
       .img-box {
         height: 4rem;
         img {
@@ -115,8 +125,8 @@ export default defineComponent({
         position: relative;
         &-icon {
           display: inline-block;
-          width: 1rem;
-          height: 1rem;
+          width: 0.8rem;
+          height: 0.8rem;
           img {
             width: 100%;
             height: 100%;
@@ -142,8 +152,8 @@ export default defineComponent({
         }
         &-download {
           display: inline-block;
-          width: 0.5rem;
-          height: 0.5rem;
+          width: 0.3rem;
+          height: 0.3rem;
           position: absolute;
           right: 0.1rem;
           cursor: pointer;
