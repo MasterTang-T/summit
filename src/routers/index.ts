@@ -37,6 +37,11 @@ const routes = [
 		component: () => import('views/GuestIntroduction.vue')
 	},
 	{
+		path: '/geos/PosterForm',
+		name: 'PosterForm',
+		component: () => import('views/PosterForm.vue'),
+	},
+	{
 		path: '/geos/FileDownloadForm',
 		name: 'FileDownloadForm',
 		component: () => import('views/FileDownloadForm.vue'),
@@ -65,6 +70,11 @@ const routes = [
 		path: '/geos/DownloadFileDetail',
 		name: 'DownloadFileDetail',
 		component: () => import('views/DownloadFileDetail.vue')
+	},
+	{
+		path: '/geos/DownloadPoster',
+		name: 'DownloadPoster',
+		component: () => import('views/DownloadPoster.vue')
 	},
 	// 所有未定义路由，全部重定向到404页
 	{

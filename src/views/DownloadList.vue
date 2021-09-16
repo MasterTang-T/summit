@@ -12,14 +12,14 @@
           <img :src="getSrc(item.wcUrl)" alt="" />
         </div>
         <div class="info-box" @click="toDetail(item)">
-          <div class="info-box-icon">
+          <div class="info-box-icon" v-if="item.icon">
             <img src="../assets/pdf-icon.png" alt="" />
           </div>
           <div class="info-box-info">
             <div class="info-box-name">{{ item.filename }}</div>
             <div class="info-box-size">{{ item.filesize }}</div>
           </div>
-          <div class="info-box-download">
+          <div class="info-box-download" v-if="item.icon">
             <img src="../assets/download-icon.png" alt="" />
           </div>
         </div>
@@ -42,6 +42,16 @@ export default defineComponent({
 
     const files: Ref<Files> = ref([
       {
+        fileurl: "",
+        wcUrl: "/src/assets/poster/wc.png",
+        filename: "电子邀请函",
+        fileOrgName: "电子邀请函.png",
+        filesize: "1M",
+        detailImg: [],
+        type: "poster",
+        icon: false,
+      },
+      {
         fileurl:
           "http://geos.officemate.cn/public/%E6%AC%A7%E8%8F%B2%E6%96%AF%E5%8F%91%E5%B8%83%E4%BC%9A%E5%BB%B6%E6%9C%9F%E9%80%9A%E7%9F%A5%EF%BC%88%E7%9B%96%E7%AB%A0%E7%89%88%EF%BC%89.pdf",
         wcUrl: "/src/assets/file2/wc.png",
@@ -49,6 +59,8 @@ export default defineComponent({
         fileOrgName: "欧菲斯发布会延期通知.pdf",
         filesize: "558KB",
         detailImg: ["/src/assets/file2/1.jpg"],
+        type: "filedownload",
+        icon: true,
       },
       {
         fileurl:
@@ -65,33 +77,32 @@ export default defineComponent({
           "/src/assets/file1/5.jpg",
           "/src/assets/file1/6.jpg",
         ],
+        type: "filedownload",
+        icon: true,
       },
     ]);
     const getSrc = (name: any) => {
       const modules = import.meta.globEager("/src/assets/**/*.png");
       return modules[name].default;
     };
-    const downloadFile = (item: any) => {
-      // 创建a标签
-      const link = document.createElement("a");
-      // download属性
-      link.setAttribute("download", item.fileOrgName);
-      // href链接
-      link.setAttribute("href", item.fileurl);
-      // 自执行点击事件
-      link.click();
-      document.body.removeChild(link);
-    };
     const toDetail = (item: any) => {
-      router.push({
-        path: "/geos/FileDownloadForm",
-        query: item,
-      });
+      let { type = "filedownload" } = item;
+      if (type === "poster") {
+        router.push({
+          path: "/geos/PosterForm",
+          query: item,
+        });
+      }
+      if (type === "filedownload") {
+        router.push({
+          path: "/geos/FileDownloadForm",
+          query: item,
+        });
+      }
     };
     return {
       files,
       getSrc,
-      downloadFile,
       toDetail,
     };
   },

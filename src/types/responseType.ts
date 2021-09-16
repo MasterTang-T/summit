@@ -1,5 +1,5 @@
 export interface IResponseType {
 	code: number;
-	data: number;
+	data: number | object;
 	message: string;
 }

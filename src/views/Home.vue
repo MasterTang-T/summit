@@ -83,6 +83,7 @@ import Header from "components/Header.vue";
 import MyOptions from "components/MyOptions.vue";
 import MyAlert from "components/MyAlert.vue";
 import { useRouter } from "vue-router";
+import service from "../utils/service";
 import {
   items1,
   items2,
@@ -99,6 +100,23 @@ export default defineComponent({
     MyAlert,
   },
   setup() {
+    const url = window.location.href;
+    let arrUrl = url.split("?");
+    if (arrUrl.length > 0 && arrUrl[1]) {
+      if (arrUrl[1].includes("usercode")) {
+        let strArr = arrUrl[1].split("=");
+        service
+          .post("/open/shareLog", {
+            userCode: strArr[1],
+          })
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    }
     let visible = ref(false);
     const router = useRouter();
     const toPage = (name: string) => {
