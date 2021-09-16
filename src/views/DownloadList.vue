@@ -12,14 +12,14 @@
           <img :src="getSrc(item.wcUrl)" alt="" />
         </div>
         <div class="info-box" @click="toDetail(item)">
-          <div class="info-box-icon" v-if="item.icon">
+          <div class="info-box-icon" v-if="item.isIcon">
             <img src="../assets/pdf-icon.png" alt="" />
           </div>
           <div class="info-box-info">
             <div class="info-box-name">{{ item.filename }}</div>
             <div class="info-box-size">{{ item.filesize }}</div>
           </div>
-          <div class="info-box-download" v-if="item.icon">
+          <div class="info-box-download" v-if="item.isIcon">
             <img src="../assets/download-icon.png" alt="" />
           </div>
         </div>
@@ -49,7 +49,7 @@ export default defineComponent({
         filesize: "1M",
         detailImg: [],
         type: "poster",
-        icon: false,
+        isIcon: false,
       },
       {
         fileurl:
@@ -60,7 +60,7 @@ export default defineComponent({
         filesize: "558KB",
         detailImg: ["/src/assets/file2/1.jpg"],
         type: "filedownload",
-        icon: true,
+        isIcon: true,
       },
       {
         fileurl:
@@ -78,7 +78,7 @@ export default defineComponent({
           "/src/assets/file1/6.jpg",
         ],
         type: "filedownload",
-        icon: true,
+        isIcon: true,
       },
     ]);
     const getSrc = (name: any) => {

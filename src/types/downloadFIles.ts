@@ -5,6 +5,7 @@ export interface FilesItem {
 	fileOrgName: string;
 	filesize: string;
 	detailImg: string[];
+	isIcon: boolean;
 }
 
 export interface Files {
