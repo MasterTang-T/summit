@@ -103,7 +103,7 @@ export default defineComponent({
     const url = window.location.href;
     let arrUrl = url.split("?");
     if (arrUrl.length > 0 && arrUrl[1]) {
-      if (arrUrl[1].includes("usercode")) {
+      if (arrUrl[1].includes("userCode")) {
         let strArr = arrUrl[1].split("=");
         service
           .post("/open/shareLog", {
