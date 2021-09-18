@@ -43,16 +43,6 @@ export default defineComponent({
     const router = useRouter();
     const files: Ref<Files> = ref([
       {
-        fileurl: "",
-        wcUrl: "/src/assets/poster/wc.png",
-        filename: "电子邀请函",
-        fileOrgName: "电子邀请函.png",
-        filesize: "1M",
-        detailImg: [],
-        type: "poster",
-        isIcon: true,
-      },
-      {
         fileurl:
           "http://geos.officemate.cn/2021%E4%B8%AD%E5%9B%BD%E6%94%BF%E4%BC%81%E9%87%87%E8%B4%AD%E4%BE%9B%E5%BA%94%E9%93%BE%E7%94%9F%E6%80%81%E5%B3%B0%E4%BC%9A20210908.pdf",
         wcUrl: "/src/assets/file2/wc.png",
@@ -61,6 +51,17 @@ export default defineComponent({
           "关于召开2021中国政企采购供应链生态（中国.北京）峰会的通知.pdf",
         filesize: "558KB",
         detailImg: ["/src/assets/file2/1.jpg"],
+        type: "filedownloadNoForm",
+        isIcon: true,
+      },
+      {
+        fileurl:
+          "http://geos.officemate.cn/2021%E4%B8%AD%E5%9B%BD%E6%94%BF%E4%BC%81%E9%87%87%E8%B4%AD%E4%BE%9B%E5%BA%94%E9%93%BE%E7%94%9F%E6%80%81%E5%B3%B0%E4%BC%9A.docx",
+        wcUrl: "",
+        filename: "参会回执",
+        fileOrgName: "参会回执.docx",
+        filesize: "15KB",
+        detailImg: ["/src/assets/file4/1.jpg"],
         type: "filedownloadNoForm",
         isIcon: true,
       },
@@ -82,15 +83,15 @@ export default defineComponent({
         type: "filedownload",
         isIcon: true,
       },
+
       {
-        fileurl:
-          "http://geos.officemate.cn/2021%E4%B8%AD%E5%9B%BD%E6%94%BF%E4%BC%81%E9%87%87%E8%B4%AD%E4%BE%9B%E5%BA%94%E9%93%BE%E7%94%9F%E6%80%81%E5%B3%B0%E4%BC%9A.docx",
-        wcUrl: "",
-        filename: "参会回执",
-        fileOrgName: "参会回执.docx",
-        filesize: "15KB",
-        detailImg: ["/src/assets/file4/1.jpg"],
-        type: "filedownload",
+        fileurl: "",
+        wcUrl: "/src/assets/poster/wc.png",
+        filename: "电子邀请函",
+        fileOrgName: "电子邀请函.png",
+        filesize: "1M",
+        detailImg: [],
+        type: "poster",
         isIcon: true,
       },
     ]);

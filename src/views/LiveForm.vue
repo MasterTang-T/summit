@@ -16,20 +16,26 @@
       </video>
     </div>
     <div class="btn-box">
-      <div class="form-button">预约直播</div>
+      <div class="form-button" @click="submitForm">预约直播</div>
     </div>
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import Header from "components/Header.vue";
+import { Dialog } from "vant";
 
 export default defineComponent({
   name: "LiveForm",
   components: {
     Header,
   },
-  setup() {},
+  setup() {
+    const submitForm = () => {
+      Dialog({ title: "提示", message: "峰会直播预约开放时间:10月8日起" });
+    };
+    return { submitForm };
+  },
 });
 </script>
 <style scoped lang='less'>

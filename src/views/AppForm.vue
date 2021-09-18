@@ -3,7 +3,9 @@
     <Header />
     <div class="form-content">
       <div class="form-item">
-        <div class="form-label">企业名称（必填）:</div>
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>企业名称:
+        </div>
         <div class="form-input">
           <input
             type="text"
@@ -13,7 +15,9 @@
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">单位性质(必填):</div>
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>单位性质:
+        </div>
         <div class="form-input">
           <input
             type="text"
@@ -33,19 +37,23 @@
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">姓名（必填）:</div>
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>姓名:
+        </div>
         <div class="form-input">
           <input type="text" placeholder="请输入姓名" v-model="username" />
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">职位（选填）:</div>
+        <div class="form-label">职位:</div>
         <div class="form-input">
           <input type="text" placeholder="请输入职位" v-model="position" />
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">联系电话(必填):</div>
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>联系电话:
+        </div>
         <div class="form-input">
           <input type="text" placeholder="请输入联系电话" v-model="telephone" />
         </div>
@@ -72,7 +80,9 @@
         </div>
       </div>
       <div class="form-item">
-        <div class="form-label">关注议题(必填):</div>
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>关注议题:
+        </div>
         <div class="form-input">
           <input
             type="text"
@@ -91,7 +101,7 @@
           </div>
         </div>
       </div>
-      <div class="form-item">
+      <!-- <div class="form-item">
         <div class="form-label">是否参加17培训(必填):</div>
         <div class="form-input form-radio">
           <van-radio-group v-model="isTrain" direction="horizontal">
@@ -99,9 +109,11 @@
             <van-radio name="0">否</van-radio>
           </van-radio-group>
         </div>
-      </div>
+      </div> -->
       <div class="form-item">
-        <div class="form-label">是否需要住宿(必填):</div>
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>是否需要住宿:
+        </div>
         <div class="form-input form-radio">
           <van-radio-group v-model="isBestow" direction="horizontal">
             <van-radio name="1">是</van-radio>
@@ -132,6 +144,7 @@ import { Notify, Area } from "vant";
 import { areaList } from "@vant/area-data";
 import { IResponseType } from "../types/responseType";
 import { useRouter } from "vue-router";
+import { Dialog } from "vant";
 
 export default defineComponent({
   name: "AppForm",
@@ -234,20 +247,22 @@ export default defineComponent({
         topic: topic.value,
         topicData: topicData.value,
         companyNature: companyNature.value,
-        isTrain: isTrain.value,
+        // isTrain: isTrain.value,
         isBestow: isBestow.value,
       });
       if (result.code === 200) {
         const { data = 10 } = result;
-        Notify({ type: "success", message: `已报名人数:${data}人` });
-        resetData();
-        setTimeout(() => {
-          router.push({
-            name: "Home",
-          });
-        }, 500);
+        // Notify({ type: "success", message: `已报名人数:${data}人` });
+        Dialog({ message: "报名信息提交成功,最终结果以短信/电话为准" }).then(
+          () => {
+            resetData();
+            router.push({
+              name: "Home",
+            });
+          }
+        );
       } else {
-        Notify({ type: "warning", message: "报名失败" });
+        Notify({ type: "warning", message: result.message || "报名失败" });
       }
     };
 
