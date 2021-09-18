@@ -1,6 +1,6 @@
 <template>
   <div class="DownloadList">
-    <!-- <Header /> -->
+    <Header />
     <div class="DownloadList-content">
       <div class="DownloadList-content-title">文件下载</div>
       <div
@@ -8,15 +8,17 @@
         v-for="(item, index) in files"
         :key="index"
       >
-        <div class="img-box" @click="toDetail(item)">
+        <!-- <div class="img-box" @click="toDetail(item)">
           <img :src="getSrc(item.wcUrl)" alt="" />
-        </div>
+        </div> -->
         <div class="info-box" @click="toDetail(item)">
           <div class="info-box-icon" v-if="item.isIcon">
             <img src="../assets/pdf-icon.png" alt="" />
           </div>
           <div class="info-box-info">
-            <div class="info-box-name">{{ item.filename }}</div>
+            <div class="info-box-name" :title="item.filename">
+              {{ item.filename }}
+            </div>
             <div class="info-box-size">{{ item.filesize }}</div>
           </div>
           <div class="info-box-download" v-if="item.isIcon">
@@ -39,7 +41,6 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
-
     const files: Ref<Files> = ref([
       {
         fileurl: "",
@@ -49,17 +50,18 @@ export default defineComponent({
         filesize: "1M",
         detailImg: [],
         type: "poster",
-        isIcon: false,
+        isIcon: true,
       },
       {
         fileurl:
-          "http://geos.officemate.cn/public/%E6%AC%A7%E8%8F%B2%E6%96%AF%E5%8F%91%E5%B8%83%E4%BC%9A%E5%BB%B6%E6%9C%9F%E9%80%9A%E7%9F%A5%EF%BC%88%E7%9B%96%E7%AB%A0%E7%89%88%EF%BC%89.pdf",
+          "http://geos.officemate.cn/2021%E4%B8%AD%E5%9B%BD%E6%94%BF%E4%BC%81%E9%87%87%E8%B4%AD%E4%BE%9B%E5%BA%94%E9%93%BE%E7%94%9F%E6%80%81%E5%B3%B0%E4%BC%9A20210908.pdf",
         wcUrl: "/src/assets/file2/wc.png",
-        filename: "欧菲斯发布会延期通知",
-        fileOrgName: "欧菲斯发布会延期通知.pdf",
+        filename: "关于召开2021中国政企采购供应链生态（中国.北京）峰会的通知",
+        fileOrgName:
+          "关于召开2021中国政企采购供应链生态（中国.北京）峰会的通知.pdf",
         filesize: "558KB",
         detailImg: ["/src/assets/file2/1.jpg"],
-        type: "filedownload",
+        type: "filedownloadNoForm",
         isIcon: true,
       },
       {
@@ -77,6 +79,17 @@ export default defineComponent({
           "/src/assets/file1/5.jpg",
           "/src/assets/file1/6.jpg",
         ],
+        type: "filedownload",
+        isIcon: true,
+      },
+      {
+        fileurl:
+          "http://geos.officemate.cn/2021%E4%B8%AD%E5%9B%BD%E6%94%BF%E4%BC%81%E9%87%87%E8%B4%AD%E4%BE%9B%E5%BA%94%E9%93%BE%E7%94%9F%E6%80%81%E5%B3%B0%E4%BC%9A.docx",
+        wcUrl: "",
+        filename: "参会回执",
+        fileOrgName: "参会回执.docx",
+        filesize: "15KB",
+        detailImg: ["/src/assets/file4/1.jpg"],
         type: "filedownload",
         isIcon: true,
       },
@@ -99,6 +112,12 @@ export default defineComponent({
           query: item,
         });
       }
+      if (type === "filedownloadNoForm") {
+        router.push({
+          path: "/geos/DownloadFileDetail",
+          query: item,
+        });
+      }
     };
     return {
       files,
@@ -114,7 +133,6 @@ export default defineComponent({
   overflow: hidden;
   position: relative;
   &-content {
-    padding: 0 0.3rem;
     &-title {
       padding: 0.3rem 0 0.3rem 0.3rem;
       font-size: 0.4rem;
@@ -123,7 +141,8 @@ export default defineComponent({
     }
     &-item {
       width: 100%;
-      height: 5rem;
+      border-bottom: 1px solid #eee;
+      // height: 5rem;
       margin-bottom: 0.8rem;
       .img-box {
         height: 4rem;
@@ -134,6 +153,7 @@ export default defineComponent({
       .info-box {
         height: 1rem;
         position: relative;
+        padding: 0 0 0.1rem 0.3rem;
         &-icon {
           display: inline-block;
           width: 0.8rem;
@@ -147,12 +167,18 @@ export default defineComponent({
         &-info {
           display: inline-block;
           vertical-align: top;
+          margin-left: 0.2rem;
+
           .info-box-name {
             font-size: 0.35rem;
             font-family: Source Han Sans CN;
             font-weight: 400;
             color: #333333;
             margin-bottom: 0.1rem;
+            width: 5rem;
+            overflow: hidden; /*超出部分隐藏*/
+            white-space: nowrap; /*禁止换行*/
+            text-overflow: ellipsis; /*省略号*/
           }
           .info-box-size {
             font-size: 0.3rem;
@@ -166,7 +192,8 @@ export default defineComponent({
           width: 0.3rem;
           height: 0.3rem;
           position: absolute;
-          right: 0.1rem;
+          right: 0.3rem;
+          top: -0.3rem;
           cursor: pointer;
           img {
             width: 100%;

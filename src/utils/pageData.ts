@@ -1,14 +1,14 @@
 export const items1 = [
 	{
 		title: "峰会直播",
-		description: "2021",
+		description: "",
 		icon: "/src/assets/1-1-icon.png",
 		routerName: "LiveForm",
 		iconTop: "2.1rem",
 		iconLeft: "2.7rem",
 		titleTop: "0.4rem",
 		titleLeft: "0.4rem",
-		jumpBtnTop: "0.0rem",
+		jumpBtnTop: "-0.14rem",
 		jumpBtnLeft: "2.7rem",
 		background: "#232FD0",
 		width: "3.4rem",
@@ -18,7 +18,7 @@ export const items1 = [
 
 export const items2 = [
 	{
-		title: "大会简介",
+		title: "峰会简介",
 		description: "",
 		icon: "/src/assets/2-icon.png",
 		iconTop: "",
@@ -48,7 +48,7 @@ export const items2 = [
 		routerName: "MeetingSchedule",
 	},
 	{
-		title: "历届嘉宾",
+		title: "峰会嘉宾",
 		description: "",
 		icon: "/src/assets/4-icon.png",
 		iconTop: "",

@@ -13,6 +13,26 @@
         </div>
       </div>
       <div class="form-item">
+        <div class="form-label">单位性质(必填):</div>
+        <div class="form-input">
+          <input
+            type="text"
+            placeholder="请选择单位性质"
+            v-model="companyNature"
+            readonly
+            @click="showCompanyNature"
+          />
+          <div class="form-pick" v-show="companyNatureShow">
+            <van-picker
+              title="单位性质"
+              :columns="companyNatureArr"
+              @confirm="onConfirmCompanyNature"
+              @cancel="onCancelCompanyNature"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-item">
         <div class="form-label">姓名（必填）:</div>
         <div class="form-input">
           <input type="text" placeholder="请输入姓名" v-model="username" />
@@ -71,6 +91,24 @@
           </div>
         </div>
       </div>
+      <div class="form-item">
+        <div class="form-label">是否参加17培训(必填):</div>
+        <div class="form-input form-radio">
+          <van-radio-group v-model="isTrain" direction="horizontal">
+            <van-radio name="1">是</van-radio>
+            <van-radio name="0">否</van-radio>
+          </van-radio-group>
+        </div>
+      </div>
+      <div class="form-item">
+        <div class="form-label">是否需要住宿(必填):</div>
+        <div class="form-input form-radio">
+          <van-radio-group v-model="isBestow" direction="horizontal">
+            <van-radio name="1">是</van-radio>
+            <van-radio name="0">否</van-radio>
+          </van-radio-group>
+        </div>
+      </div>
       <!-- <div class="form-item">
         <div class="form-label">是否需要关注议题PPT课件(选填):</div>
         <div class="form-input form-radio">
@@ -104,6 +142,31 @@ export default defineComponent({
     let router = useRouter();
     let username: Ref<string> = ref(""); // 客户名称
     let companyName = ref(""); // 企业名称
+    let companyNature = ref(""); // 单位性质
+    let companyNatureShow = ref(false);
+    const showCompanyNature = () => {
+      companyNatureShow.value = true;
+    };
+
+    const companyNatureArr = ref([
+      "央企",
+      "国企",
+      "投资机构",
+      "媒体",
+      "友商",
+      "供应商",
+      "品牌商",
+      "合作商",
+      "合作伙伴",
+      "其他",
+    ]);
+    const onConfirmCompanyNature = (value: string, index: number) => {
+      companyNature.value = value;
+      companyNatureShow.value = false;
+    };
+    const onCancelCompanyNature = () => {
+      companyNatureShow.value = false;
+    };
     let position = ref(""); // 职位
     let telephone = ref(""); //电话号码
     const topics = ref([
@@ -117,6 +180,8 @@ export default defineComponent({
     let topic = ref(""); // 关注议题
     let area = ref(""); //所属区域
     let topicData = ref(1); // 关注议题ppt课题
+    let isTrain = ref("0");
+    let isBestow = ref("0");
     let pickerShow = ref(false);
     let areaShow = ref(false);
     const showPicker = () => {
@@ -132,6 +197,7 @@ export default defineComponent({
       telephone.value = "";
       topic.value = "";
       area.value = "";
+      companyNature.value = "";
     };
     const submitForm = async () => {
       if (!username.value) {
@@ -140,6 +206,10 @@ export default defineComponent({
       }
       if (!companyName.value) {
         Notify({ type: "warning", message: "请输入企业名称" });
+        return;
+      }
+      if (!companyNature.value) {
+        Notify({ type: "warning", message: "请选择单位性质" });
         return;
       }
       if (!telephone.value) {
@@ -163,6 +233,9 @@ export default defineComponent({
         area: area.value,
         topic: topic.value,
         topicData: topicData.value,
+        companyNature: companyNature.value,
+        isTrain: isTrain.value,
+        isBestow: isBestow.value,
       });
       if (result.code === 200) {
         const { data = 10 } = result;
@@ -215,6 +288,14 @@ export default defineComponent({
       onCancel,
       onConfirmArea,
       onCancelArea,
+      companyNature,
+      showCompanyNature,
+      companyNatureShow,
+      companyNatureArr,
+      onConfirmCompanyNature,
+      onCancelCompanyNature,
+      isTrain,
+      isBestow,
     };
   },
 });

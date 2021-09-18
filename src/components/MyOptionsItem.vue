@@ -83,7 +83,7 @@ export default defineComponent({
     font-weight: bold;
     color: #ffffff;
     position: absolute;
-    top: 33%;
+    top: 26%;
     left: 30%;
     &-description {
       margin-top: 0.2rem;

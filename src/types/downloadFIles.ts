@@ -9,5 +9,5 @@ export interface FilesItem {
 }
 
 export interface Files {
-	[index:number]: FilesItem;
+	[index: number]: FilesItem;
 }

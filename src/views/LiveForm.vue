@@ -1,14 +1,14 @@
 <template>
   <div class="LiveForm">
     <Header>
-      <template #liveBtn="{ liveBtn }">
+      <!-- <template #liveBtn="{ liveBtn }">
         <div class="liveBtn">
           <img src="../assets/play-icon.png" />
           <span>{{ liveBtn }}</span>
         </div>
-      </template>
+      </template> -->
     </Header>
-    <div class="LiveForm-title">大会简介</div>
+    <div class="LiveForm-title">峰会先导片</div>
     <div class="video-box">
       <video controls poster="../assets/video-poster.jpg">
         <source src="http://geos.officemate.cn/public/summit.m4v" />

@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="form-item">
-        <div class="form-button" @click="submitForm">生成海报</div>
+        <div class="form-button" @click="submitForm">生成邀请函</div>
       </div>
     </div>
   </div>

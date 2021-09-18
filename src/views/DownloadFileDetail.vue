@@ -49,6 +49,7 @@ export default defineComponent({
 .DownloadFileDetail {
   width: 100vw;
   position: relative;
+  margin-top: 0.5rem;
   .title {
     height: 1rem;
     display: flex;
@@ -73,6 +74,8 @@ export default defineComponent({
       text-align: center;
     }
   }
+  // 两个文件的线上地址
+  // 关键数据的展示
   .footer {
     background: #ffffff;
     box-shadow: 0px -2px 8px 0px rgba(153, 153, 153, 0.2);
