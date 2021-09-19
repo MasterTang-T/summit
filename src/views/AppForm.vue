@@ -81,23 +81,90 @@
       </div>
       <div class="form-item">
         <div class="form-label">
-          <i style="color: red; margin-right: 0.1rem">*</i>关注议题:
+          <i style="color: red; margin-right: 0.1rem">*</i>参加日程:
         </div>
-        <div class="form-input">
-          <input
-            type="text"
-            placeholder="请选择关注议题"
-            v-model="topic"
-            readonly
-            @click="showPicker"
-          />
-          <div class="form-pick" v-show="pickerShow">
-            <van-picker
-              title="关注议题"
-              :columns="topics"
-              @confirm="onConfirm"
-              @cancel="onCancel"
-            />
+        <div class="plan-content">
+          <div class="plan-item">
+            <div class="plan-item-title">10月15日</div>
+            <div class="plan-item-body">
+              <div class="checkbox-item">
+                <van-checkbox
+                  name="办公物资采购管理规范》启动会"
+                  shape="square"
+                  v-model="checked01"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text"
+                    >《办公物资采购管理规范》启动会</span
+                  ></van-checkbox
+                >
+              </div>
+              <div class="checkbox-item">
+                <van-checkbox
+                  v-model="checked02"
+                  shape="square"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text"
+                    >《公共采购办公物资年度白皮书》启动会</span
+                  ></van-checkbox
+                >
+              </div>
+              <div class="checkbox-item">
+                <van-checkbox
+                  v-model="checked03"
+                  shape="square"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text"
+                    >政企采购供应链品牌年会</span
+                  ></van-checkbox
+                >
+              </div>
+            </div>
+          </div>
+          <div class="plan-item">
+            <div class="plan-item-title">10月16日</div>
+            <div class="plan-item-body">
+              <div class="checkbox-item">
+                <van-checkbox
+                  v-model="checked04"
+                  shape="square"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text">MRO分论坛</span></van-checkbox
+                >
+              </div>
+              <div class="checkbox-item">
+                <van-checkbox
+                  v-model="checked05"
+                  shape="square"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text">信创分论坛</span></van-checkbox
+                >
+              </div>
+              <div class="checkbox-item">
+                <van-checkbox
+                  v-model="checked06"
+                  shape="square"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text"
+                    >采购数字化分论坛</span
+                  ></van-checkbox
+                >
+              </div>
+            </div>
+          </div>
+          <div class="plan-item">
+            <div class="plan-item-title">10月17日</div>
+            <div class="plan-item-body">
+              <div class="checkbox-item">
+                <van-checkbox
+                  v-model="checked07"
+                  shape="square"
+                  checked-color="#C90626"
+                  ><span class="checkbox-text"
+                    >国企采购操作规范专题培训会</span
+                  ></van-checkbox
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -160,7 +227,6 @@ export default defineComponent({
     const showCompanyNature = () => {
       companyNatureShow.value = true;
     };
-
     const companyNatureArr = ref([
       "央企",
       "国企",
@@ -197,6 +263,13 @@ export default defineComponent({
     let isBestow = ref("0");
     let pickerShow = ref(false);
     let areaShow = ref(false);
+    let checked01 = ref(false); // 《办公物资采购管理规范》启动会
+    let checked02 = ref(false); // 《公共采购办公物资年度白皮书》启动会
+    let checked03 = ref(false); // 政企采购供应链品牌年会
+    let checked04 = ref(false); // MRO分论坛
+    let checked05 = ref(false); // 信创分论坛
+    let checked06 = ref(false); // 采购数字化分论坛
+    let checked07 = ref(false); // 国企采购操作规范专题培训会
     const showPicker = () => {
       pickerShow.value = true;
     };
@@ -208,11 +281,44 @@ export default defineComponent({
       companyName.value = "";
       position.value = "";
       telephone.value = "";
-      topic.value = "";
       area.value = "";
       companyNature.value = "";
+      checked01.value = false;
+      checked02.value = false;
+      checked03.value = false;
+      checked04.value = false;
+      checked05.value = false;
+      checked06.value = false;
+      checked07.value = false;
     };
     const submitForm = async () => {
+      let topicSet = new Set();
+      if (checked01.value) {
+        topicSet.add("办公物资采购管理规范》启动会");
+      }
+      if (checked02.value) {
+        topicSet.add("《公共采购办公物资年度白皮书》启动会");
+      }
+      if (checked03.value) {
+        topicSet.add("政企采购供应链品牌年会");
+      }
+      if (checked04.value) {
+        topicSet.add("MRO分论坛");
+      }
+      if (checked05.value) {
+        topicSet.add("信创分论坛");
+      }
+      if (checked06.value) {
+        topicSet.add("采购数字化分论坛");
+      }
+      if (checked07.value) {
+        topicSet.add("国企采购操作规范专题培训会");
+      }
+      let topicArray = Array.from(topicSet);
+      if (topicArray.length <= 0) {
+        Notify({ type: "warning", message: "请选择参加日程" });
+        return;
+      }
       if (!username.value) {
         Notify({ type: "warning", message: "请输入姓名" });
         return;
@@ -229,10 +335,6 @@ export default defineComponent({
         Notify({ type: "warning", message: "请输入联系方式" });
         return;
       }
-      if (!topic.value) {
-        Notify({ type: "warning", message: "请选择关注议题" });
-        return;
-      }
       if (!area.value) {
         Notify({ type: "warning", message: "请选择所属区域" });
         return;
@@ -244,10 +346,9 @@ export default defineComponent({
         position: position.value,
         telephone: telephone.value,
         area: area.value,
-        topic: topic.value,
+        topic: topicArray.join(","),
         topicData: topicData.value,
         companyNature: companyNature.value,
-        // isTrain: isTrain.value,
         isBestow: isBestow.value,
       });
       if (result.code === 200) {
@@ -311,6 +412,13 @@ export default defineComponent({
       onCancelCompanyNature,
       isTrain,
       isBestow,
+      checked01,
+      checked02,
+      checked03,
+      checked04,
+      checked05,
+      checked06,
+      checked07,
     };
   },
 });
@@ -349,6 +457,26 @@ export default defineComponent({
 
       .form-input input::placeholder {
         color: #dddddd;
+      }
+      .plan-content {
+        .plan-item {
+          margin-top: 0.5rem;
+          &-title {
+            font-weight: 500;
+            color: #666666;
+            font-size: 0.4rem;
+            margin-bottom: 0.3rem;
+          }
+          &-body {
+            font-weight: 500;
+            color: #666666;
+            font-size: 0.35rem;
+            font-weight: 500;
+            .checkbox-item {
+              margin-bottom: 0.4rem;
+            }
+          }
+        }
       }
     }
     .form-button {
