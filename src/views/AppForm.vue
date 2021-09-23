@@ -294,7 +294,7 @@ export default defineComponent({
     const submitForm = async () => {
       let topicSet = new Set();
       if (checked01.value) {
-        topicSet.add("办公物资采购管理规范》启动会");
+        topicSet.add("《办公物资采购管理规范》启动会");
       }
       if (checked02.value) {
         topicSet.add("《公共采购办公物资年度白皮书》启动会");
@@ -303,7 +303,7 @@ export default defineComponent({
         topicSet.add("政企采购供应链品牌年会");
       }
       if (checked04.value) {
-        topicSet.add("MRO分论坛");
+        topicSet.add("国有企业MRO数字化采购转型战略与发展趋势论坛");
       }
       if (checked05.value) {
         topicSet.add("信创分论坛");
@@ -312,7 +312,7 @@ export default defineComponent({
         topicSet.add("采购数字化分论坛");
       }
       if (checked07.value) {
-        topicSet.add("国企采购操作规范专题培训会");
+        topicSet.add("国有企业网上商城采购交易操作规范");
       }
       let topicArray = Array.from(topicSet);
       if (topicArray.length <= 0) {
