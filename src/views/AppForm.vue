@@ -159,8 +159,10 @@
                   v-model="checked07"
                   shape="square"
                   checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >国企采购操作规范专题培训会</span
+                  ><span
+                    class="checkbox-text"
+                    style="width: 6rem; display: inline-block"
+                    >《国有企业网上商城采购交易操作规范》专题培训会</span
                   ></van-checkbox
                 >
               </div>
@@ -312,7 +314,7 @@ export default defineComponent({
         topicSet.add("采购数字化分论坛");
       }
       if (checked07.value) {
-        topicSet.add("国有企业网上商城采购交易操作规范");
+        topicSet.add("《国有企业网上商城采购交易操作规范》专题培训会");
       }
       let topicArray = Array.from(topicSet);
       if (topicArray.length <= 0) {
