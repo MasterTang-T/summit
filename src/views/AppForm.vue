@@ -265,7 +265,6 @@ export default defineComponent({
       topicArr.value = [];
     };
     const submitForm = async () => {
-      console.log(topicArr.value, "topicArr.value");
       if (topicArr.value.length <= 0) {
         Notify({ type: "warning", message: "请选择参加日程" });
         return;
@@ -305,7 +304,6 @@ export default defineComponent({
       });
       if (result.code === 200) {
         const { data = 10 } = result;
-        // Notify({ type: "success", message: `已报名人数:${data}人` });
         Dialog({ message: "报名信息提交成功,最终结果以短信/电话为准" }).then(
           () => {
             resetData();
