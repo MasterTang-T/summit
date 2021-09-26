@@ -316,7 +316,7 @@ export default defineComponent({
         Notify({ type: "warning", message: result.message || "报名失败" });
       }
     };
-    const onConfirmArea = (value: any, index: number) => {
+    const onConfirmArea = (value: any) => {
       area.value = "";
       let valueArr: [] = value;
       valueArr.forEach((item: any) => {
