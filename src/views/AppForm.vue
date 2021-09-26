@@ -95,103 +95,95 @@
           <i style="color: red; margin-right: 0.1rem">*</i>参加日程:
         </div>
         <div class="plan-content">
-          <div class="plan-item">
-            <div class="plan-item-title">10月15日</div>
-            <div class="plan-item-body">
-              <div class="checkbox-item">
-                <van-checkbox
-                  v-model="checked02"
-                  shape="square"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >《办公物资采购2021白皮书》启动会</span
-                  ></van-checkbox
-                >
-              </div>
-              <div class="checkbox-item">
-                <van-checkbox
-                  name="办公物资采购管理规范》启动会"
-                  shape="square"
-                  v-model="checked01"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >《国有企业办公物资网上采购操作指南》团体标准编制工作启动会</span
-                  ></van-checkbox
-                >
-              </div>
-              <div class="checkbox-item">
-                <van-checkbox
-                  v-model="checked03"
-                  shape="square"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >政企采购供应链品牌年会</span
-                  ></van-checkbox
-                >
-              </div>
-            </div>
-          </div>
-          <div class="plan-item">
-            <div class="plan-item-title">10月16日</div>
-            <div class="plan-item-body">
-              <div class="checkbox-item">
-                <van-checkbox
-                  v-model="checked04"
-                  shape="square"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >国有企业MRO数字化采购转型战略与发展趋势论坛</span
-                  ></van-checkbox
-                >
-              </div>
-              <div class="checkbox-item">
-                <van-checkbox
-                  v-model="checked05"
-                  shape="square"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >信创供应链生态布局暨供应链集群响应能力分析研讨会</span
-                  ></van-checkbox
-                >
-              </div>
-              <div class="checkbox-item">
-                <van-checkbox
-                  v-model="checked06"
-                  shape="square"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >数字化采购与供应链生态论坛</span
-                  ></van-checkbox
-                >
+          <van-checkbox-group v-model="topicArr">
+            <div class="plan-item">
+              <div class="plan-item-title">10月15日</div>
+              <div class="plan-item-body">
+                <div class="checkbox-item">
+                  <van-checkbox
+                    name="《办公物资采购2021白皮书》启动会"
+                    shape="square"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >《办公物资采购2021白皮书》启动会</span
+                    ></van-checkbox
+                  >
+                </div>
+                <div class="checkbox-item">
+                  <van-checkbox
+                    name="《国有企业办公物资网上采购操作指南》团体标准编制工作启动会"
+                    shape="square"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >《国有企业办公物资网上采购操作指南》团体标准编制工作启动会</span
+                    ></van-checkbox
+                  >
+                </div>
+                <div class="checkbox-item">
+                  <van-checkbox
+                    name="政企采购供应链品牌年会"
+                    shape="square"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >政企采购供应链品牌年会</span
+                    ></van-checkbox
+                  >
+                </div>
               </div>
             </div>
-          </div>
-          <div class="plan-item">
-            <div class="plan-item-title">10月17日</div>
-            <div class="plan-item-body">
-              <div class="checkbox-item">
-                <van-checkbox
-                  v-model="checked07"
-                  shape="square"
-                  checked-color="#C90626"
-                  ><span class="checkbox-text"
-                    >《国有企业网上商城采购交易操作规范》专题培训会</span
-                  ></van-checkbox
-                >
+            <div class="plan-item">
+              <div class="plan-item-title">10月16日</div>
+              <div class="plan-item-body">
+                <div class="checkbox-item">
+                  <van-checkbox
+                    shape="square"
+                    name="国有企业MRO数字化采购转型战略与发展趋势论坛"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >国有企业MRO数字化采购转型战略与发展趋势论坛</span
+                    ></van-checkbox
+                  >
+                </div>
+                <div class="checkbox-item">
+                  <van-checkbox
+                    shape="square"
+                    name="信创供应链生态布局暨供应链集群响应能力分析研讨会"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >信创供应链生态布局暨供应链集群响应能力分析研讨会</span
+                    ></van-checkbox
+                  >
+                </div>
+                <div class="checkbox-item">
+                  <van-checkbox
+                    name="数字化采购与供应链生态论坛"
+                    shape="square"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >数字化采购与供应链生态论坛</span
+                    ></van-checkbox
+                  >
+                </div>
               </div>
             </div>
-          </div>
+            <div class="plan-item">
+              <div class="plan-item-title">10月17日</div>
+              <div class="plan-item-body">
+                <div class="checkbox-item">
+                  <van-checkbox
+                    name="《国有企业网上商城采购交易操作规范》专题培训会"
+                    shape="square"
+                    checked-color="#C90626"
+                    ><span class="checkbox-text"
+                      >《国有企业网上商城采购交易操作规范》专题培训会</span
+                    ></van-checkbox
+                  >
+                </div>
+              </div>
+            </div>
+          </van-checkbox-group>
         </div>
       </div>
-      <!-- <div class="form-item">
-        <div class="form-label">是否参加17培训(必填):</div>
-        <div class="form-input form-radio">
-          <van-radio-group v-model="isTrain" direction="horizontal">
-            <van-radio name="1">是</van-radio>
-            <van-radio name="0">否</van-radio>
-          </van-radio-group>
-        </div>
-      </div> -->
       <div class="form-item">
         <div class="form-label">
           <i style="color: red; margin-right: 0.1rem">*</i>是否需要住宿:
@@ -203,15 +195,6 @@
           </van-radio-group>
         </div>
       </div>
-      <!-- <div class="form-item">
-        <div class="form-label">是否需要关注议题PPT课件(选填):</div>
-        <div class="form-input form-radio">
-          <van-radio-group v-model="topicData" direction="horizontal">
-            <van-radio name="1">是</van-radio>
-            <van-radio name="2">否</van-radio>
-          </van-radio-group>
-        </div>
-      </div> -->
       <div class="form-item">
         <div class="form-button" @click="submitForm">确认提交</div>
       </div>
@@ -222,7 +205,7 @@
 import { defineComponent, ref, Ref } from "vue";
 import Header from "components/Header.vue";
 import service from "../utils/service";
-import { Notify, Area } from "vant";
+import { Notify } from "vant";
 import { areaList } from "@vant/area-data";
 import { IResponseType } from "../types/responseType";
 import { useRouter } from "vue-router";
@@ -263,31 +246,12 @@ export default defineComponent({
     };
     let position = ref(""); // 职位
     let telephone = ref(""); //电话号码
-    const topics = ref([
-      "央企负责人数字化采购案例分享",
-      "产业链供应链专家分享",
-      "欧菲斯数字化采购服务平台",
-      "数字化采购发展报告",
-      "信创专场主题分享",
-      "其他",
-    ]);
-    let topic = ref(""); // 关注议题
     let area = ref(""); //所属区域
     let topicData = ref(1); // 关注议题ppt课题
     let sex = ref("男");
     let isBestow = ref("0");
-    let pickerShow = ref(false);
     let areaShow = ref(false);
-    let checked01 = ref(false); // 《办公物资采购管理规范》启动会
-    let checked02 = ref(false); // 《公共采购办公物资年度白皮书》启动会
-    let checked03 = ref(false); // 政企采购供应链品牌年会
-    let checked04 = ref(false); // MRO分论坛
-    let checked05 = ref(false); // 信创分论坛
-    let checked06 = ref(false); // 采购数字化分论坛
-    let checked07 = ref(false); // 国企采购操作规范专题培训会
-    const showPicker = () => {
-      pickerShow.value = true;
-    };
+    let topicArr = ref([]); // 参会日程
     const showArea = () => {
       areaShow.value = true;
     };
@@ -298,41 +262,11 @@ export default defineComponent({
       telephone.value = "";
       area.value = "";
       companyNature.value = "";
-      checked01.value = false;
-      checked02.value = false;
-      checked03.value = false;
-      checked04.value = false;
-      checked05.value = false;
-      checked06.value = false;
-      checked07.value = false;
+      topicArr.value = [];
     };
     const submitForm = async () => {
-      let topicSet = new Set();
-      if (checked01.value) {
-        topicSet.add(
-          "《国有企业办公物资网上采购操作指南》团体标准编制工作启动会"
-        );
-      }
-      if (checked02.value) {
-        topicSet.add("《办公物资采购2021白皮书》启动会");
-      }
-      if (checked03.value) {
-        topicSet.add("政企采购供应链品牌年会");
-      }
-      if (checked04.value) {
-        topicSet.add("国有企业MRO数字化采购转型战略与发展趋势论坛");
-      }
-      if (checked05.value) {
-        topicSet.add("信创供应链生态布局暨供应链集群响应能力分析研讨会");
-      }
-      if (checked06.value) {
-        topicSet.add("数字化采购与供应链生态论坛");
-      }
-      if (checked07.value) {
-        topicSet.add("《国有企业网上商城采购交易操作规范》专题培训会");
-      }
-      let topicArray = Array.from(topicSet);
-      if (topicArray.length <= 0) {
+      console.log(topicArr.value, "topicArr.value");
+      if (topicArr.value.length <= 0) {
         Notify({ type: "warning", message: "请选择参加日程" });
         return;
       }
@@ -363,7 +297,7 @@ export default defineComponent({
         position: position.value,
         telephone: telephone.value,
         area: area.value,
-        topic: topicArray.join(","),
+        topic: topicArr.value.join(","),
         topicData: topicData.value,
         companyNature: companyNature.value,
         isBestow: isBestow.value,
@@ -384,14 +318,6 @@ export default defineComponent({
         Notify({ type: "warning", message: result.message || "报名失败" });
       }
     };
-
-    const onConfirm = (value: string, index: number) => {
-      topic.value = value;
-      pickerShow.value = false;
-    };
-    const onCancel = () => {
-      pickerShow.value = false;
-    };
     const onConfirmArea = (value: any, index: number) => {
       area.value = "";
       let valueArr: [] = value;
@@ -405,8 +331,6 @@ export default defineComponent({
     };
     return {
       submitForm,
-      topics,
-      topic,
       area,
       topicData,
       username,
@@ -414,12 +338,8 @@ export default defineComponent({
       position,
       telephone,
       areaList,
-      pickerShow,
       areaShow,
-      showPicker,
       showArea,
-      onConfirm,
-      onCancel,
       onConfirmArea,
       onCancelArea,
       companyNature,
@@ -430,13 +350,7 @@ export default defineComponent({
       onCancelCompanyNature,
       sex,
       isBestow,
-      checked01,
-      checked02,
-      checked03,
-      checked04,
-      checked05,
-      checked06,
-      checked07,
+      topicArr,
     };
   },
 });
