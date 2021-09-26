@@ -45,6 +45,17 @@
         </div>
       </div>
       <div class="form-item">
+        <div class="form-label">
+          <i style="color: red; margin-right: 0.1rem">*</i>性别:
+        </div>
+        <div class="form-input form-radio">
+          <van-radio-group v-model="sex" direction="horizontal">
+            <van-radio name="男">男</van-radio>
+            <van-radio name="女">女</van-radio>
+          </van-radio-group>
+        </div>
+      </div>
+      <div class="form-item">
         <div class="form-label">职位:</div>
         <div class="form-input">
           <input type="text" placeholder="请输入职位" v-model="position" />
@@ -89,22 +100,22 @@
             <div class="plan-item-body">
               <div class="checkbox-item">
                 <van-checkbox
-                  name="办公物资采购管理规范》启动会"
+                  v-model="checked02"
                   shape="square"
-                  v-model="checked01"
                   checked-color="#C90626"
                   ><span class="checkbox-text"
-                    >《办公物资采购管理规范》启动会</span
+                    >《办公物资采购2021白皮书》启动会</span
                   ></van-checkbox
                 >
               </div>
               <div class="checkbox-item">
                 <van-checkbox
-                  v-model="checked02"
+                  name="办公物资采购管理规范》启动会"
                   shape="square"
+                  v-model="checked01"
                   checked-color="#C90626"
                   ><span class="checkbox-text"
-                    >《公共采购办公物资年度白皮书》启动会</span
+                    >《国有企业办公物资网上采购操作指南》团体标准编制工作启动会</span
                   ></van-checkbox
                 >
               </div>
@@ -128,7 +139,9 @@
                   v-model="checked04"
                   shape="square"
                   checked-color="#C90626"
-                  ><span class="checkbox-text">MRO分论坛</span></van-checkbox
+                  ><span class="checkbox-text"
+                    >国有企业MRO数字化采购转型战略与发展趋势论坛</span
+                  ></van-checkbox
                 >
               </div>
               <div class="checkbox-item">
@@ -136,7 +149,9 @@
                   v-model="checked05"
                   shape="square"
                   checked-color="#C90626"
-                  ><span class="checkbox-text">信创分论坛</span></van-checkbox
+                  ><span class="checkbox-text"
+                    >信创供应链生态布局暨供应链集群响应能力分析研讨会</span
+                  ></van-checkbox
                 >
               </div>
               <div class="checkbox-item">
@@ -145,7 +160,7 @@
                   shape="square"
                   checked-color="#C90626"
                   ><span class="checkbox-text"
-                    >采购数字化分论坛</span
+                    >数字化采购与供应链生态论坛</span
                   ></van-checkbox
                 >
               </div>
@@ -159,9 +174,7 @@
                   v-model="checked07"
                   shape="square"
                   checked-color="#C90626"
-                  ><span
-                    class="checkbox-text"
-                    style="width: 6rem; display: inline-block"
+                  ><span class="checkbox-text"
                     >《国有企业网上商城采购交易操作规范》专题培训会</span
                   ></van-checkbox
                 >
@@ -261,7 +274,7 @@ export default defineComponent({
     let topic = ref(""); // 关注议题
     let area = ref(""); //所属区域
     let topicData = ref(1); // 关注议题ppt课题
-    let isTrain = ref("0");
+    let sex = ref("男");
     let isBestow = ref("0");
     let pickerShow = ref(false);
     let areaShow = ref(false);
@@ -296,10 +309,12 @@ export default defineComponent({
     const submitForm = async () => {
       let topicSet = new Set();
       if (checked01.value) {
-        topicSet.add("《办公物资采购管理规范》启动会");
+        topicSet.add(
+          "《国有企业办公物资网上采购操作指南》团体标准编制工作启动会"
+        );
       }
       if (checked02.value) {
-        topicSet.add("《公共采购办公物资年度白皮书》启动会");
+        topicSet.add("《办公物资采购2021白皮书》启动会");
       }
       if (checked03.value) {
         topicSet.add("政企采购供应链品牌年会");
@@ -308,10 +323,10 @@ export default defineComponent({
         topicSet.add("国有企业MRO数字化采购转型战略与发展趋势论坛");
       }
       if (checked05.value) {
-        topicSet.add("信创分论坛");
+        topicSet.add("信创供应链生态布局暨供应链集群响应能力分析研讨会");
       }
       if (checked06.value) {
-        topicSet.add("采购数字化分论坛");
+        topicSet.add("数字化采购与供应链生态论坛");
       }
       if (checked07.value) {
         topicSet.add("《国有企业网上商城采购交易操作规范》专题培训会");
@@ -352,6 +367,7 @@ export default defineComponent({
         topicData: topicData.value,
         companyNature: companyNature.value,
         isBestow: isBestow.value,
+        sex: sex.value,
       });
       if (result.code === 200) {
         const { data = 10 } = result;
@@ -412,7 +428,7 @@ export default defineComponent({
       companyNatureArr,
       onConfirmCompanyNature,
       onCancelCompanyNature,
-      isTrain,
+      sex,
       isBestow,
       checked01,
       checked02,
@@ -437,6 +453,11 @@ export default defineComponent({
       width: 100%;
       padding: 0.56rem;
       border-bottom: 1px solid #fbfbfb;
+      .checkbox-text {
+        font-size: 0.32rem;
+        display: inline-block;
+        width: 6rem;
+      }
       .form-label {
         font-size: 0.3rem;
         font-family: Source Han Sans CN;
