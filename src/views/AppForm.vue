@@ -369,6 +369,7 @@ export default defineComponent({
         font-size: 0.32rem;
         display: inline-block;
         width: 6rem;
+        line-height: 1.2;
       }
       .form-label {
         font-size: 0.3rem;
@@ -433,5 +434,9 @@ export default defineComponent({
       margin-top: 0.4rem;
     }
   }
+}
+.van-radio,
+.van-checkbox {
+  overflow: inherit;
 }
 </style>
