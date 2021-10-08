@@ -32,7 +32,10 @@ export default defineComponent({
   },
   setup() {
     const submitForm = () => {
-      Dialog({ title: "提示", message: "峰会直播预约开放时间:10月8日起" });
+      // Dialog({ title: "提示", message: "峰会直播预约开放时间:10月8日起" });
+      const url =
+        "https://wx.vzan.com/live/tvchat-830341976?jumpitd=1&shauid=&sharetstamp=0#/";
+      window.location = url as unknown as Location;
     };
     return { submitForm };
   },
