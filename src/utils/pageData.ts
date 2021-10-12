@@ -83,7 +83,7 @@ export const items3 = [
 export const items4 = [
 	{
 		title: "我要报名",
-		routerName: "AppForm",
+		routerName: "",
 		description: "",
 		icon: "/src/assets/6-1-icon.png",
 		iconTop: "0.6rem",
@@ -95,6 +95,7 @@ export const items4 = [
 		background: "linear-gradient(-55deg, #1D2089, #C51523)",
 		width: "3.4rem",
 		height: "1.8rem",
+		alertMessage: "报名已截止"
 	},
 ];
 export const items5 = [

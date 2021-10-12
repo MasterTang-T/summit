@@ -4,7 +4,9 @@
     <div class="my-alert-content">
       <img src="../assets/info.png" alt="" />
     </div>
-    <div class="my-alert-text">敬请期待</div>
+    <div class="my-alert-text">
+      <slot>敬请期待</slot>
+    </div>
     <!-- <div class="my-alert-description">功能还在开发中...</div> -->
   </div>
 </template>

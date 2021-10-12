@@ -8,7 +8,7 @@
             v-for="(item, index) in items1"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -17,7 +17,7 @@
             v-for="(item, index) in items2"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -28,7 +28,7 @@
             v-for="(item, index) in items3"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -37,7 +37,7 @@
             v-for="(item, index) in items4"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -48,7 +48,7 @@
             v-for="(item, index) in items5"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -57,7 +57,7 @@
             v-for="(item, index) in items6"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -66,7 +66,7 @@
             v-for="(item, index) in items7"
             :key="index"
             :setting="item"
-            @click="toPage(item.routerName || '')"
+            @click="toPage(item || {})"
           >
           </my-options>
         </div>
@@ -74,7 +74,9 @@
     </div>
     <div class="footer">敬请期待...</div>
   </div>
-  <my-alert v-if="visible" @onClose="onClose"></my-alert>
+  <my-alert v-if="visible" @onClose="onClose">
+    <div>{{ selfAlertMessage }}</div>
+  </my-alert>
 </template>
 
 <script lang="ts">
@@ -118,13 +120,18 @@ export default defineComponent({
       }
     }
     let visible = ref(false);
+    let selfAlertMessage = ref("");
     const router = useRouter();
-    const toPage = (name: string) => {
-      if (name === "") {
+    const toPage = (obj: any) => {
+      const { routerName, alertMessage } = obj;
+      if (routerName === "") {
+        if (alertMessage) {
+          selfAlertMessage.value = alertMessage;
+        }
         visible.value = true;
       } else {
         router.push({
-          name,
+          name: routerName,
         });
       }
     };
@@ -142,6 +149,7 @@ export default defineComponent({
       items5,
       items6,
       items7,
+      selfAlertMessage,
     };
   },
 });
